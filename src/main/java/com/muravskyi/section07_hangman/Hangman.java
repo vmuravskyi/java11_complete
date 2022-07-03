@@ -8,12 +8,10 @@ public class Hangman {
 
 	private boolean running = true;
 	private boolean isRepeatGame = true;
-	private RandomWord word = new RandomWord();
-	private Scanner scanner = new Scanner(System.in);
+	private final RandomWord word = new RandomWord();
+	private final Scanner scanner = new Scanner(System.in);
 	private int triesRemaining = 10;
 	private char lastGuess;
-//	private String inputRegex = "^[a-zA-Z];
-	private String inputRegex = "\\p{L}+";
 
 	public boolean run() {
 		do {
@@ -63,6 +61,7 @@ public class Hangman {
 
 	private boolean isUserInputVerified(String guess) {
 		boolean isVerified = true;
+		String inputRegex = "\\p{L}+";
 		Pattern pattern = Pattern.compile(inputRegex);
 		Matcher matcher = pattern.matcher(guess);
 		if (!matcher.matches() || guess.isBlank() || guess.isEmpty()) {
@@ -76,7 +75,7 @@ public class Hangman {
 		boolean isGuessCorrect = word.addGuess(lastGuess);
 		if (isGuessCorrect) {
 			if (word.isComplete()) {
-				System.out.println("You have won!");
+				System.out.print("\n\nYou have won!");
 				System.out.printf("\nThe word is: [%s]", word.toString().replaceAll(" ", ""));
 				running = false;
 			}
