@@ -4,9 +4,9 @@ public class App {
 
     public static void main(String[] args) {
 
-        Menu menu = new Menu();
+        Menu optionMenu = new Menu();
 
-        menu.display();
+        optionMenu.display();
 
     }
 
