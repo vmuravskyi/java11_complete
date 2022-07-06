@@ -7,10 +7,13 @@ public class App {
 
         boolean isRaining = false;
         boolean mightRain = true;
+        boolean haveUmbrella = false;
 
-        boolean takeUmbrella = isRaining || mightRain;
-
-        System.out.println(takeUmbrella);
+        if ((isRaining || mightRain) && !haveUmbrella) {
+            System.out.println("Take umbrella");
+        } else {
+            System.out.println("Don't take umbrella");
+        }
 
     }
 

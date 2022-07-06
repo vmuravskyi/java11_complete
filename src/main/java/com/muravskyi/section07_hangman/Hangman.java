@@ -50,7 +50,7 @@ public class Hangman {
 	void getUserInput() {
 		// ask a user to enter a character
 		// get the character as a string
-		// pass the character to rantomWord as the argument to a method
+		// pass the character to randomWord as the argument to a method
 		System.out.println("Enter your guess > ");
 		String guess;
 		do {

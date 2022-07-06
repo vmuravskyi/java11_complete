@@ -4,13 +4,13 @@ import java.util.Random;
 
 public class RandomWord {
 
-//	private final String[] words = {"father", "family", "infant", "tongue", "nothing", "longer", "explicit", "call",
-//		"authority", "blacksmith", "likeness", "photograph", "regarding", "inscription", "sister", "mother", "shape",
-//		"childish", "pocket", "conclusion", "memory"};
+	private final String[] words = {"father", "family", "infant", "tongue", "nothing", "longer", "explicit", "call",
+		"authority", "blacksmith", "likeness", "photograph", "regarding", "inscription", "sister", "mother", "shape",
+		"childish", "pocket", "conclusion", "memory"};
 	
-	private final String[] words = {"один", "відомий", "сучасність", "письменник", "діалог", "автор", "гострий", "рейтинг",
-		"популярність", "сорт", "бажання", "каталог", "книга", "мільйон", "моторошний", "сюжет", "проза",
-		"жанр", "людина", "порок", "постановка"};
+//	private final String[] words = {"один", "відомий", "сучасність", "письменник", "діалог", "автор", "гострий", "рейтинг",
+//		"популярність", "сорт", "бажання", "каталог", "книга", "мільйон", "моторошний", "сюжет", "проза",
+//		"жанр", "людина", "порок", "постановка"};
 
 	private final String chosenWord;
 	private final Random random = new Random();
