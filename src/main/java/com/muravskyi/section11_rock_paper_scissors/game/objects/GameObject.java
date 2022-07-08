@@ -3,14 +3,15 @@ package com.muravskyi.section11_rock_paper_scissors.game.objects;
 public abstract class GameObject implements Comparable<GameObject> {
 
     //@formatter:off
+    private int id = 1;
+    private String name;
+
     private final int[][] comparison = {
             //                 rock      paper     scissors
             /* rock */      {   0,        -1,          1,   },
             /* paper */     {   1,         0,         -1,   },
             /* scissors */  {  -1,         1,          0,   }
     };
-    private int id = 1;
-    private String name;
     //@formatter:on
 
     protected int getId() {
