@@ -5,8 +5,6 @@ import javax.swing.JToolBar;
 
 public class Toolbar extends JToolBar {
 
-
-
     public Toolbar() {
         this.add(new JButton("One"));
         this.add(new JButton("Two"));
