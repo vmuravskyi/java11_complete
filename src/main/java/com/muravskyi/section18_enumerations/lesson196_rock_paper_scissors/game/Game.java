@@ -1,6 +1,7 @@
 package com.muravskyi.section18_enumerations.lesson196_rock_paper_scissors.game;
 
 import com.muravskyi.section18_enumerations.lesson196_rock_paper_scissors.game.objects.GameObject;
+
 import java.util.Random;
 import java.util.Scanner;
 import java.util.regex.Matcher;
@@ -17,56 +18,59 @@ public class Game {
         System.out.println("Starting a new game...");
 
         Random random = new Random();
-        Scanner scanner = new Scanner(System.in);
+        try (Scanner scanner = new Scanner(System.in)) {
 
-        System.out.println("How many games you would like to play? 1- 10");
-        String inputCountOfGames;
-        do {
-            inputCountOfGames = scanner.nextLine();
-        } while (isUserInputVerified(inputCountOfGames, countGamesRegex));
-
-        // get the amount of game user wants to play
-        int countOfGames = Integer.parseInt(inputCountOfGames);
-        do {
-            // get game object with random value from game objects array
-            GameObject randomObject = gameObjects[random.nextInt(gameObjects.length)];
-
-            System.out.println("\nPlease, make your choice:");
-            System.out.println("1: Rock");
-            System.out.println("2: Paper");
-            System.out.println("3: Scissors");
-            System.out.println("> ");
-
-            String input;
+            System.out.println("How many games you would like to play? 1- 10");
+            String inputCountOfGames;
             do {
-                input = scanner.nextLine();
-            } while (isUserInputVerified(input, objectRegex));
+                inputCountOfGames = scanner.nextLine();
+            } while (isUserInputVerified(inputCountOfGames, countGamesRegex));
 
-            // get user game object from user's input - 1 (game objects array starts with 0)
-            GameObject playerObject = gameObjects[Integer.parseInt(input) - 1];
+            // get the amount of game user wants to play
+            int countOfGames = Integer.parseInt(inputCountOfGames);
+            do {
+                // get game object with random value from game objects array
+                GameObject randomObject = gameObjects[random.nextInt(gameObjects.length)];
 
-            System.out.println("You chose: " + playerObject.toString());
-            System.out.println("The computer chose: " + randomObject.toString());
-            boolean win = playerObject.beats(randomObject);
+                System.out.println("\nPlease, make your choice:");
+                System.out.println("1: Rock");
+                System.out.println("2: Paper");
+                System.out.println("3: Scissors");
+                System.out.println("> ");
 
-            // print compare result
-            if (win) {
-                System.out.println(playerObject + " beats " + randomObject);
-                System.out.println("You win");
-                ++score;
-            } else if (playerObject == randomObject) {
-                System.out.println("Draw");
-            } else {
-                System.out.println(randomObject + " beats " + playerObject);
-                System.out.println("You loose");
-                --score;
-            }
+                String input;
+                do {
+                    input = scanner.nextLine();
+                } while (isUserInputVerified(input, objectRegex));
 
-            // count number of wins & looses
-            countOfGames--;
-        } while (countOfGames > 0);
-        scorePrinter();
-        scanner.close();
+                // get user game object from user's input - 1 (game objects array starts with 0)
+                GameObject playerObject = gameObjects[Integer.parseInt(input) - 1];
+
+                System.out.println("You chose: " + playerObject.toString());
+                System.out.println("The computer chose: " + randomObject.toString());
+                boolean win = playerObject.beats(randomObject);
+
+                // print compare result
+                if (win) {
+                    System.out.println(playerObject + " beats " + randomObject);
+                    System.out.println("You win");
+                    ++score;
+                } else if (playerObject == randomObject) {
+                    System.out.println("Draw");
+                } else {
+                    System.out.println(randomObject + " beats " + playerObject);
+                    System.out.println("You loose");
+                    --score;
+                }
+
+                // count number of wins & looses
+                countOfGames--;
+            } while (countOfGames > 0);
+            scorePrinter();
+        } catch (Exception e) {
+            e.printStackTrace();
+            System.out.println(e.getMessage());
+        }
     }
 
     private boolean isUserInputVerified(String input, String regex) {
