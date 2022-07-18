@@ -1,8 +1,9 @@
-package com.muravskyi.section25_java_collections_api.lesson285_custom_objects_in_araylist;
+package com.muravskyi.section25_java_collections_api.lesson286_sorting_lists;
 
 import java.util.ArrayList;
+import java.util.Collections;
 
-class Person {
+class Person implements Comparable<Person> {
 
     private String name;
 
@@ -14,9 +15,14 @@ class Person {
         return name;
     }
 
+    @Override
+    public int compareTo(Person o) {
+        return this.name.compareTo(o.name);
+    }
 }
 
 public class App {
+
 
     public static void main(String[] args) {
 
@@ -24,12 +30,14 @@ public class App {
         people.add(new Person("Joe"));
         people.add(new Person("Pip"));
         people.add(new Person("Estella"));
+        people.add(new Person("Al"));
         people.add(new Person("Biddy"));
 
         people.set(1, new Person("Phillip"));
 
-        people.forEach(System.out::println);
+        Collections.sort(people);
 
+        people.forEach(System.out::println);
 
         System.out.println();
 
@@ -39,7 +47,10 @@ public class App {
         numbers.add(4.45);
         numbers.add(2.34);
 
+        Collections.sort(numbers);
+
         numbers.forEach(System.out::println);
+
 
     }
 
