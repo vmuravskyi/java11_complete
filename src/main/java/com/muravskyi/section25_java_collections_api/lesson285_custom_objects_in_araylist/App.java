@@ -31,16 +31,6 @@ public class App {
         people.forEach(System.out::println);
 
 
-        System.out.println();
-
-        ArrayList<Double> numbers = new ArrayList<>();
-        numbers.add(1.23);
-        numbers.add(5.56);
-        numbers.add(4.45);
-        numbers.add(2.34);
-
-        numbers.forEach(System.out::println);
-
     }
 
 }
