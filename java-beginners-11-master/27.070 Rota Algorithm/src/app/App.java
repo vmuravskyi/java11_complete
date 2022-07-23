@@ -5,39 +5,39 @@ import java.util.List;
 
 public class App {
 
-	private static String[][] peopleSkills = { { "Oliver", "programming", "electronics" },
-			{ "Jake", "reception", "engineering" },
-			{ "Amelia", "programming", "reception", "electronics", "management" },
-			{ "Noah", "management", "electronics" }, { "James", "programming", "management", "electronics" },
-			{ "Margaret", "engineering", "electronics", "programming", "reception" }, { "Emma", "programming" },
-			{ "Jack", "engineering", "electronics", "programming" }, { "Mary", "engineering", "electronics" }, };
+    private static String[][] peopleSkills = {{"Oliver", "programming", "electronics"},
+        {"Jake", "reception", "engineering"},
+        {"Amelia", "programming", "reception", "electronics", "management"},
+        {"Noah", "management", "electronics"}, {"James", "programming", "management", "electronics"},
+        {"Margaret", "engineering", "electronics", "programming", "reception"}, {"Emma", "programming"},
+        {"Jack", "engineering", "electronics", "programming"}, {"Mary", "engineering", "electronics"},};
 
-	public static void main(String[] args) {
+    public static void main(String[] args) {
 
-		Rota rota = new Rota(loadData());
-		
-		System.out.println(rota);
-	}
+        Rota rota = new Rota(loadData());
 
-	private static List<Person> loadData() {
-		List<Person> people = new ArrayList<>();
+        System.out.println(rota);
+    }
 
-		for (var row : peopleSkills) {
-			var name = row[0];
+    private static List<Person> loadData() {
+        List<Person> people = new ArrayList<>();
 
-			var person = new Person(name);
+        for (var row : peopleSkills) {
+            var name = row[0];
 
-			for (var i = 1; i < row.length; i++) {
+            var person = new Person(name);
 
-				var skill = row[i];
-				person.addSkill(Skill.valueOf(skill.toUpperCase()));
-			}
+            for (var i = 1; i < row.length; i++) {
 
-			people.add(person);
+                var skill = row[i];
+                person.addSkill(Skill.valueOf(skill.toUpperCase()));
+            }
 
-		}
-		
-		return people;
-	}
+            people.add(person);
+
+        }
+
+        return people;
+    }
 
 }
