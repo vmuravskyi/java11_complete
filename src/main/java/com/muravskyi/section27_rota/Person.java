@@ -1,6 +1,6 @@
 package com.muravskyi.section27_rota;
 
-import java.util.LinkedHashSet;
+import java.util.HashSet;
 import java.util.Set;
 
 public class Person {
@@ -11,7 +11,16 @@ public class Person {
 
     public Person(String name) {
         this.name = name;
-        skills = new LinkedHashSet<>();
+
+        skills = new HashSet<>();
+    }
+
+    public void addSkill(Skill skill) {
+        skills.add(skill);
+    }
+
+    public Set<Skill> getSkills() {
+        return skills;
     }
 
     public boolean isOnHoliday() {
@@ -22,17 +31,18 @@ public class Person {
         this.onHoliday = onHoliday;
     }
 
-    public void addSkill(Skill skill) {
-        this.skills.add(skill);
-    }
-
-    public Set<Skill> getSkills() {
-        return skills;
-    }
-
-    @Override
     public String toString() {
-        return "name: " + name + ", skills: " + skills;
+        StringBuilder sb = new StringBuilder();
+
+        sb.append(name);
+        sb.append(": ");
+
+        for (var skill : skills) {
+            sb.append(skill);
+            sb.append("\t");
+        }
+
+        return sb.toString();
     }
 
 }

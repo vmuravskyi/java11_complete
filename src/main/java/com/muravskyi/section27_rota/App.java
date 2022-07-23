@@ -14,35 +14,46 @@ public class App {
         {"Margaret", "engineering", "electronics", "programming", "reception"},
         {"Emma", "programming"},
         {"Jack", "engineering", "electronics", "programming"},
-        {"Mary", "engineering", "electronics"},
+        {"Mary", "engineering", "electronics"}
     };
 
     public static void main(String[] args) {
 
-        List<Person> people = new ArrayList<>();
-        loadData(people);
+        Rota rota = new Rota();
 
-        Rota rota = new Rota(people);
+        rota.add(loadData());
 
+//        rota.nextWeek();
+//        rota.nextWeek();
         System.out.println(rota);
 
+        //rota.nextWeek();
+
+        //System.out.println(rota);
     }
 
-    public static List<Person> loadData(List<Person> people) {
+    private static List<Person> loadData() {
+        List<Person> people = new ArrayList<>();
+
         for (var row : peopleSkills) {
             var name = row[0];
 
             var person = new Person(name);
 
             for (var i = 1; i < row.length; i++) {
-                var skill = Skill.valueOf(row[i].toUpperCase());
-                person.addSkill(skill);
+
+                if(name.equals("Margaret")) {
+                    person.setOnHoliday(true);
+                }
+
+                var skill = row[i];
+                person.addSkill(Skill.valueOf(skill.toUpperCase()));
             }
+
             people.add(person);
+
         }
-        for (Person person : people) {
-            System.out.println(person);
-        }
+
         return people;
     }
 
