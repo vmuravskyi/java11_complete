@@ -1,0 +1,24 @@
+package com.muravskyi.java_11_complete.section16_inner_classes.lesson186_static_inner_classes;
+
+public class Person {
+
+    public static class Head {
+        public void print() {
+            System.out.println("Head");
+        }
+    }
+
+    static class Body {
+        public void print() {
+            System.out.println("Body");
+        }
+    }
+
+    public void print() {
+        Head head = new Head();
+        Body body = new Body();
+        head.print();
+        body.print();
+    }
+
+}

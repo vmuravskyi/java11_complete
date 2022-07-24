@@ -1,0 +1,24 @@
+package com.muravskyi.java_11_complete.section14_further_OOP.section168_abstract_class_example;
+
+import java.util.Timer;
+import java.util.TimerTask;
+
+class Task extends TimerTask {
+
+	@Override
+	public void run() {
+		System.out.println("Hello");
+	}
+	
+}
+
+public class App {
+	
+	public static void main(String[] args) {
+		
+		Timer timer = new Timer();
+		timer.scheduleAtFixedRate(new Task(), 0L, 1000L);
+		
+	}
+
+}
