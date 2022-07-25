@@ -4,6 +4,13 @@ import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
 
+/**
+ * CREATE TABLE `user` (
+ * `id` int auto_increment primary key,
+ * `name` text NOT NULL
+ * )
+ */
+
 public class Database {
 
     private static final Database DB = new Database();
@@ -16,6 +23,10 @@ public class Database {
 
     public static Database instance() {
         return DB;
+    }
+
+    public Connection getConnection() {
+        return conn;
     }
 
     public void connect() throws SQLException {

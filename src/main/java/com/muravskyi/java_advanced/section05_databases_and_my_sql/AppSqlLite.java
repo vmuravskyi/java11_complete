@@ -36,15 +36,15 @@ public class AppSqlLite {
             String insert = "insert into user (id, name) values (?, ?)";
             preparedInsertStatement = connection.prepareStatement(insert);
 
-            for (int i = 0; i < ids.length; i++) {
-                preparedInsertStatement.setInt(1, ids[i]);
-                preparedInsertStatement.setString(2, names[i]);
-                // run statement
+//            for (int i = 0; i < ids.length; i++) {
+//                preparedInsertStatement.setInt(1, ids[i]);
+//                preparedInsertStatement.setString(2, names[i]);
+//                // run statement
 //				preparedInsertStatement.executeUpdate();
-            }
-
-            // commit changes
-			connection.commit();
+//            }
+//
+//            // commit changes
+//			connection.commit();
 
             // query inserted data
             String sqlQuery = "select id, name from user";
@@ -71,12 +71,12 @@ public class AppSqlLite {
             }
 
             // drop table
-			try {
-				statement.execute(sqlDropUserTable);
-			} catch (SQLException e1) {
-				// TODO Auto-generated catch block
-				e1.printStackTrace();
-			}
+//			try {
+//				statement.execute(sqlDropUserTable);
+//			} catch (SQLException e1) {
+//				// TODO Auto-generated catch block
+//				e1.printStackTrace();
+//			}
 
             // close connection
             try {
