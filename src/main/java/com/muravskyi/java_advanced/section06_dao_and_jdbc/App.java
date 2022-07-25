@@ -1,17 +1,27 @@
 package com.muravskyi.java_advanced.section06_dao_and_jdbc;
 
+import java.io.IOException;
 import java.sql.SQLException;
 import java.util.List;
 import java.util.Optional;
+import java.util.Properties;
 
 public class App {
 
     public static void main(String[] args) {
 
+        Properties props = new Properties();
+        try {
+            props.load(App.class.getResourceAsStream("/config/db.properties"));
+        } catch (IOException e) {
+            e.printStackTrace();
+            return;
+        }
+
         var db = Database.instance();
 
         try {
-            db.connect();
+            db.connect(props);
             System.out.println("Connected");
 
             UserDao userDao = new UserDaoImpl();
@@ -36,7 +46,7 @@ public class App {
             if (userFromDb.isPresent()) {
                 User user = userFromDb.get();
                 System.out.println("Retrieved " + user);
-                user.setName("Snoopy");
+                user.setName("asdasdasdasdas");
                 userDao.update(userFromDb.get());
             } else {
                 System.err.println("User was not found");
@@ -52,6 +62,7 @@ public class App {
         } catch (SQLException e) {
             System.err.println("Could not connect to database");
             System.err.println(e.getMessage());
+            e.printStackTrace();
         } finally {
             try {
                 db.disconnect();
