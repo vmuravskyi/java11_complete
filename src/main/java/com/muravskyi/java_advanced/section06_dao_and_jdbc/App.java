@@ -1,28 +1,14 @@
 package com.muravskyi.java_advanced.section06_dao_and_jdbc;
 
-import java.io.IOException;
 import java.sql.SQLException;
 import java.util.List;
 import java.util.Optional;
-import java.util.Properties;
 
 public class App {
 
     public static void main(String[] args) {
 
-        Properties props = new Properties();
-        String propertiesFile = "/config/db.properties";
-        try {
-            props.load(App.class.getResourceAsStream(propertiesFile));
-        } catch (NullPointerException e) {
-            System.err.println("Cannot find file: " + propertiesFile);
-            e.printStackTrace();
-            return;
-        } catch (IOException e) {
-            System.err.println("Cannot load properties file" + propertiesFile);
-            e.printStackTrace();
-            return;
-        }
+        var props = Profile.getProperties("db");
 
         var db = Database.instance();
 
@@ -52,7 +38,7 @@ public class App {
             if (userFromDb.isPresent()) {
                 User user = userFromDb.get();
                 System.out.println("Retrieved " + user);
-                user.setName("asdasdasdasdas");
+                user.setName("Saturn");
                 userDao.update(userFromDb.get());
             } else {
                 System.err.println("User was not found");
