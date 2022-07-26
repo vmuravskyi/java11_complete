@@ -11,9 +11,15 @@ public class App {
     public static void main(String[] args) {
 
         Properties props = new Properties();
+        String propertiesFile = "/config/db.properties";
         try {
-            props.load(App.class.getResourceAsStream("/config/db.properties"));
+            props.load(App.class.getResourceAsStream(propertiesFile));
+        } catch (NullPointerException e) {
+            System.err.println("Cannot find file: " + propertiesFile);
+            e.printStackTrace();
+            return;
         } catch (IOException e) {
+            System.err.println("Cannot load properties file" + propertiesFile);
             e.printStackTrace();
             return;
         }
