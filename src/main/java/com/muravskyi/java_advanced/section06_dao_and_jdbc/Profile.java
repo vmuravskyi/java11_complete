@@ -8,7 +8,7 @@ public class Profile {
     public static Properties getProperties(String fileName) {
         Properties props = new Properties();
 
-        String env = System.getProperty("env");
+        String env = System.getenv("env");
         if (env == null) {
             env = "dev";
         }
