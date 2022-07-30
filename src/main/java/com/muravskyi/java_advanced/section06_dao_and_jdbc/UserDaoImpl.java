@@ -107,7 +107,7 @@ public class UserDaoImpl implements UserDao {
         var result = new ArrayList<User>();
         try {
             statement = conn.createStatement();
-            ResultSet resultSet = statement.executeQuery("select * from user");
+            ResultSet resultSet = statement.executeQuery("select * from user order by id");
             while (resultSet.next()) {
                 int id = resultSet.getInt(1);
                 String name = resultSet.getString(2);
