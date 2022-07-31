@@ -1,6 +1,6 @@
-package com.muravskyi.java_advanced.section09_reflection.lesson89_listing_fields;
+package com.muravskyi.java_advanced.section09_reflection.lesson90_lesson89_listing_methods;
 
-import java.lang.reflect.Field;
+import java.lang.reflect.Method;
 import java.util.Arrays;
 
 class User {
@@ -13,6 +13,8 @@ class Employee extends User {
 
     public int id;
 
+    private void calculate() {}
+
 }
 
 public class App {
@@ -21,8 +23,8 @@ public class App {
 
         Class<? extends Employee> clazz = Employee.class;
 
-        Field[] declaredFields = clazz.getFields();
-        System.out.println(Arrays.toString(declaredFields));
+        Method[] methods = clazz.getDeclaredMethods();
+        Arrays.asList(methods).forEach(System.out::println);
 
     }
 
